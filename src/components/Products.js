@@ -1,3 +1,7 @@
+import TopBar from "./TopBar";
 export default function Products() {
-  return <h1>Products</h1>;
+  return (<>
+    <TopBar />
+  <h1>Products</h1>
+  </>);
 }

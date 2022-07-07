@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import dotenv from "dotenv";
+dotenv.config();
 
 export default function SingupForm() {
   const navigate = useNavigate();
