@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import dotenv from "dotenv";
+dotenv.config();
 
 export default function SingupForm() {
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ export default function SingupForm() {
     setIsLoading(true);
 
     if (password === passwordConfirmation) {
-      const url = "https://gamemaster-project14.herokuapp.com/singup";
+      const url = "http://localhost:5000/singup";
       const body = { name, email, image, password };
 
       axios

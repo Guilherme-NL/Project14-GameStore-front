@@ -6,10 +6,11 @@ import {
   useUserData,
   saveUserDataInLocalStorage,
 } from "../contexts/UserDataContext";
+import dotenv from "dotenv";
+dotenv.config();
 
 export default function SinginForm() {
   const navigate = useNavigate();
-
   const [isLoading, setIsLoading] = React.useState(false);
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -19,7 +20,7 @@ export default function SinginForm() {
     e.preventDefault();
     setIsLoading(true);
 
-    const url = "https://gamemaster-project14.herokuapp.com/singin";
+    const url =  "http://localhost:5000/singin";
     const body = { email, password };
 
     axios
