@@ -20,7 +20,7 @@ export default function SinginForm() {
     e.preventDefault();
     setIsLoading(true);
 
-    const url =  "http://localhost:5000/singin";
+    const url =  "https://gamemaster-project14.herokuapp.com/singin";
     const body = { email, password };
 
     axios
