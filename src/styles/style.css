@@ -1,0 +1,12 @@
+/* font-family: 'Metal Mania', cursive; */
+@import url("https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap");
+/* font-family: 'Glegoo', serif; */
+@import url("https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Glegoo", serif;
+}
