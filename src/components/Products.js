@@ -5,14 +5,43 @@ import styled from "styled-components";
 import axios from "axios";
 import Product from "./ProductComponent";
 import { useState, useEffect } from "react";
+import SearchBar from "./productsSearchBar";
 
 export default function Products() {
   const [{ token }] = useUserData();
   const [productList, setProductList] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchCategory, setSearchCategory] = useState("name");
+  const [searchOrder, setSearchOrder] = useState("-1");
+
+  const search = {
+    searchTerm,
+    setSearchTerm,
+    searchCategory,
+    setSearchCategory,
+    searchOrder,
+    setSearchOrder,
+  };
   function requestProductList() {
-    //const requisition=axios.get("https://gamemaster-project14.herokuapp.com/products")
-    const requisition = axios.get("http://localhost:5000/products");
+    // const requisition = axios.get(
+    //   "https://gamemaster-project14.herokuapp.com/products?searchTerm=" +
+    //     searchTerm +
+    //     "&searchCategory=" +
+    //     searchCategory +
+    //     "&searchOrder=" +
+    //     searchOrder
+    // );
+    const requisition = axios.get(
+      "http://localhost:5000/products?searchTerm=" +
+        searchTerm +
+        "&searchCategory=" +
+        searchCategory +
+        "&searchOrder=" +
+        searchOrder
+    );
+    console.log("busca " + searchTerm);
     requisition.then((response) => {
+      console.log(response.data);
       setProductList(response.data);
     });
     requisition.catch((error) => {
@@ -47,6 +76,7 @@ export default function Products() {
   return (
     <>
       <TopBar />
+      <SearchBar search={search} requestProductList={requestProductList} />
       <Container>
         {productList.map((product) => (
           <Product
@@ -68,7 +98,7 @@ export default function Products() {
 }
 const Container = styled.div`
   width: 100%;
-  margin: 55px 0;
+  margin: 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;

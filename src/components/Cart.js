@@ -51,7 +51,7 @@ export default function Cart() {
         id={e._id}
         name={e.name}
         image={e.image}
-        platform={e.platform}
+        platform={e.platforms}
         price={e.price}
         cart={cart}
         setCart={setCart}
@@ -67,9 +67,28 @@ export default function Cart() {
         Authorization: `Bearer ${token}`,
       },
     };
-    const body = {};
+    const newCart = cart.map(({ _id, ...rest }) => {
+      return rest;
+    });
+    const body = newCart;
 
-    axios.post(url, body, auth);
+    axios
+      .post(url, body, auth)
+      .then((response) => {
+        console.log("Confirmed");
+      })
+      .catch((error) => {
+        alert("Ocorreu um erro");
+        console.log(error.data);
+      });
+
+    const urlDelet = "http://localhost:5000/cart";
+
+    axios.delete(urlDelet, auth).catch((err) => {
+      console.log("ops, não foi possível deletar o seu produto");
+    });
+
+    setOpenModal(true);
   }
 
   return (
@@ -80,7 +99,7 @@ export default function Cart() {
         <Total>Total: R${Number(sum).toFixed(2)}</Total>
         <button
           onClick={() => {
-            setOpenModal(true);
+            confirmPurchase();
           }}
           style={{ display: cart.length >= 1 ? "block" : "none" }}
         >
@@ -95,7 +114,6 @@ export default function Cart() {
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
   margin: 55px 0;
   display: flex;
   flex-direction: column;

@@ -14,7 +14,7 @@ export default function Modal({ closeModal }) {
 
 const ModalBackground = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background-color: rgba(200, 200, 200, 0.1);
   position: fixed;
   display: flex;
