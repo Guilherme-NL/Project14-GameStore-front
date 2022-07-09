@@ -49,6 +49,12 @@ div p{
 div h1{
   font-size:22px;
 }
+div select{
+    margin: 0 5px;
+    background-color: #f5f5f5;
+    border-style: none;
+    border-radius: 3px;
+}
 `;
 const NavigationButton = styled.button`
 position:absolute;
