@@ -32,6 +32,7 @@ export default function TopBar(){
     );
 }
 const Container = styled.div`
+z-index: 1;
 display:flex;
 justify-content: space-between;
 position:fixed;
