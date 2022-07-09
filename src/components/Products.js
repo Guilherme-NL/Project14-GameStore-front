@@ -33,8 +33,8 @@ export default function Products() {
       productId:productId,
       platform:selectedPlatform
     }
-    //const requisition=axios.post("https://gamemaster-project14.herokuapp.com/cart",reqBody, auth);
-    const requisition=axios.post("http://localhost:5000/cart",reqBody, auth);
+    const requisition=axios.post("https://gamemaster-project14.herokuapp.com/cart",reqBody, auth);
+    //const requisition=axios.post("http://localhost:5000/cart",reqBody, auth);
     requisition.then(response=>{
       console.log("Posted")
         //navigate('/');
