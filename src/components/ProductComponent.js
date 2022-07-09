@@ -1,16 +1,17 @@
 import styled from "styled-components";
 import React from "react";
+import { useState } from "react";
+
 
 export default function Product(props){
-  function addToCart(){
-  };
+  const [selectedPlatform,setSelectedPlatform]=useState(props.platforms[0]);
   return(
     <ProductWrapper>
       <div><img src={props.image} alt="Game Cover"></img></div>
       <div>
         <h1><p>{props.name}</p></h1>
         <p><label>Platform: </label>
-        <select>
+        <select onChange={(e)=>setSelectedPlatform(e.target.value)}>
           {props.platforms.map((platform,index) =>
               <option value={platform} key={index}> {platform}</option>
           )}
@@ -19,7 +20,7 @@ export default function Product(props){
         <p>Price: R${Number(props.price).toFixed(2)}</p>
         <p>Rated: {props.rated}</p>
       </div>
-      <NavigationButton onClick={addToCart}><ion-icon name="cart-outline"></ion-icon></NavigationButton>
+      <NavigationButton onClick={(e)=>props.addToCart(props.productId,selectedPlatform)}><ion-icon name="cart-outline"></ion-icon></NavigationButton>
     </ProductWrapper>
   )
 };

@@ -14,9 +14,8 @@ export default function TopBar(){
                 "Authorization": `Bearer ${token}`
             }
         }
-        console.log(auth)
-        const requisition=axios.delete("https://gamemaster-project14.herokuapp.com/session", auth);
-        //const requisition=axios.delete("http://localhost:5000/session", auth);
+        //const requisition=axios.delete("https://gamemaster-project14.herokuapp.com/session", auth);
+        const requisition=axios.delete("http://localhost:5000/session", auth);
         requisition.then(response=>{
             navigate('/');
         });

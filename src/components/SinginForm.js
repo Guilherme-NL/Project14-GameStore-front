@@ -20,8 +20,8 @@ export default function SinginForm() {
     e.preventDefault();
     setIsLoading(true);
 
-    const url =  "https://gamemaster-project14.herokuapp.com/signin";
-    //const url =  "http://localhost:5000/signin";
+    //const url =  "https://gamemaster-project14.herokuapp.com/signin";
+    const url =  "http://localhost:5000/signin";
     
     const body = { email, password };
 
