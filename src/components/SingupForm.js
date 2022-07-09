@@ -20,8 +20,8 @@ export default function SingupForm() {
     setIsLoading(true);
 
     if (password === passwordConfirmation) {
-      const url = "https://gamemaster-project14.herokuapp.com/signup";
-      //const url = "http://localhost:5000/signup";
+      //const url = "https://gamemaster-project14.herokuapp.com/signup";
+      const url = "http://localhost:5000/signup";
       const body = { name, email, image, password };
 
       axios
