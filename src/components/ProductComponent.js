@@ -16,8 +16,8 @@ export default function Product(props){
           )}
         </select></p>
         <p>Released: {props.released}</p>
-        <p>Price: R${Number(props.price.$numberInt).toFixed(2)}</p>
-        <p>Rated: {props.rated.$numberInt}</p>
+        <p>Price: R${Number(props.price).toFixed(2)}</p>
+        <p>Rated: {props.rated}</p>
       </div>
       <NavigationButton onClick={addToCart}><ion-icon name="cart-outline"></ion-icon></NavigationButton>
     </ProductWrapper>
