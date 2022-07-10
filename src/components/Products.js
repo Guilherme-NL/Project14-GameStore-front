@@ -1,6 +1,7 @@
 import { useUserData } from "../contexts/UserDataContext";
 import TopBar from "./TopBar";
 import BottomBar from "./BottomBar";
+import PageBar from "./ProductPageComponent";
 import styled from "styled-components";
 import axios from "axios";
 import Product from "./ProductComponent";
@@ -13,6 +14,8 @@ export default function Products() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchCategory, setSearchCategory] = useState("name");
   const [searchOrder, setSearchOrder] = useState("-1");
+  const [page,setPage]=useState(0);
+  const [maxPage,setMaxPage]=useState(1);
 
   const search = {
     searchTerm,
@@ -29,27 +32,32 @@ export default function Products() {
         "&searchCategory=" +
         searchCategory +
         "&searchOrder=" +
-        searchOrder
+        searchOrder +
+        "&page=" +
+        page
     );
-    // const requisition = axios.get(
-    //   "http://localhost:5000/products?searchTerm=" +
-    //     searchTerm +
-    //     "&searchCategory=" +
-    //     searchCategory +
-    //     "&searchOrder=" +
-    //     searchOrder
-    // );
-    console.log("busca " + searchTerm);
+    //*/
+     /*const requisition = axios.get(
+       "http://localhost:5000/products?searchTerm=" +
+         searchTerm +
+         "&searchCategory=" +
+         searchCategory +
+         "&searchOrder=" +
+         searchOrder +
+         "&page=" +
+         page
+     );
+    // */
     requisition.then((response) => {
-      console.log(response.data);
       setProductList(response.data);
+      setMaxPage(Math.ceil(response.data.length/10));
     });
     requisition.catch((error) => {
       alert("Ocorreu um erro");
       console.log(error.data);
     });
   }
-  useEffect(requestProductList, []);
+  useEffect(requestProductList, [page]);
 
   function addToCart(productId, selectedPlatform) {
     const auth = {
@@ -66,6 +74,7 @@ export default function Products() {
       reqBody,
       auth
     );
+    //*/
     //const requisition = axios.post("http://localhost:5000/cart", reqBody, auth);
     requisition.then((response) => {
       console.log("Posted");
@@ -96,6 +105,7 @@ export default function Products() {
           />
         ))}
       </Container>
+      <PageBar page={page} setPage={setPage} maxPage={maxPage} requestProductList={requestProductList}/>
       <BottomBar />
     </>
   );
