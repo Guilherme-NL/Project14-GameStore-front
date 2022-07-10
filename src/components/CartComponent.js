@@ -15,8 +15,8 @@ export default function CartList({
   const [{ token }] = useUserData();
 
   function deleteCart(id) {
-    //const url = "https://gamemaster-project14.herokuapp.com/cart";
-    const url = `http://localhost:5000/cart/${id}`;
+    const url = `https://gamemaster-project14.herokuapp.com/cart/${id}`;
+    //const url = `http://localhost:5000/cart/${id}`;
     const auth = {
       headers: {
         Authorization: `Bearer ${token}`,

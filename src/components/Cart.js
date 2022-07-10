@@ -17,8 +17,8 @@ export default function Cart() {
   }, 0);
 
   React.useEffect(() => {
-    //const url = "https://gamemaster-project14.herokuapp.com/cart";
-    const url = "http://localhost:5000/cart";
+    const url = "https://gamemaster-project14.herokuapp.com/cart";
+    //const url = "http://localhost:5000/cart";
     const auth = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -60,8 +60,8 @@ export default function Cart() {
   }
 
   function confirmPurchase() {
-    //const url = "https://gamemaster-project14.herokuapp.com/history";
-    const url = "http://localhost:5000/history";
+    const url = "https://gamemaster-project14.herokuapp.com/history";
+    //const url = "http://localhost:5000/history";
     const auth = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -82,7 +82,8 @@ export default function Cart() {
         console.log(error.data);
       });
 
-    const urlDelet = "http://localhost:5000/cart";
+    const urlDelet = "https://gamemaster-project14.herokuapp.com/cart";
+    //const urlDelet = "http://localhost:5000/cart";
 
     axios.delete(urlDelet, auth).catch((err) => {
       console.log("ops, não foi possível deletar o seu produto");

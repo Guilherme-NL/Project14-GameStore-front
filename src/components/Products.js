@@ -23,22 +23,22 @@ export default function Products() {
     setSearchOrder,
   };
   function requestProductList() {
-    // const requisition = axios.get(
-    //   "https://gamemaster-project14.herokuapp.com/products?searchTerm=" +
-    //     searchTerm +
-    //     "&searchCategory=" +
-    //     searchCategory +
-    //     "&searchOrder=" +
-    //     searchOrder
-    // );
     const requisition = axios.get(
-      "http://localhost:5000/products?searchTerm=" +
+      "https://gamemaster-project14.herokuapp.com/products?searchTerm=" +
         searchTerm +
         "&searchCategory=" +
         searchCategory +
         "&searchOrder=" +
         searchOrder
     );
+    // const requisition = axios.get(
+    //   "http://localhost:5000/products?searchTerm=" +
+    //     searchTerm +
+    //     "&searchCategory=" +
+    //     searchCategory +
+    //     "&searchOrder=" +
+    //     searchOrder
+    // );
     console.log("busca " + searchTerm);
     requisition.then((response) => {
       console.log(response.data);
@@ -61,8 +61,12 @@ export default function Products() {
       productId: productId,
       platform: selectedPlatform,
     };
-    //const requisition = axios.post("https://gamemaster-project14.herokuapp.com/cart",reqBody,auth);
-    const requisition = axios.post("http://localhost:5000/cart", reqBody, auth);
+    const requisition = axios.post(
+      "https://gamemaster-project14.herokuapp.com/cart",
+      reqBody,
+      auth
+    );
+    //const requisition = axios.post("http://localhost:5000/cart", reqBody, auth);
     requisition.then((response) => {
       console.log("Posted");
       //navigate('/');
