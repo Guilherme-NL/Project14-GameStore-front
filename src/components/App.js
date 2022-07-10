@@ -7,6 +7,7 @@ import Singup from "./Singup";
 import Products from "./Products";
 import Cart from "./Cart";
 import History from "./History";
+import ProductById from "./ProductById";
 import ProtectedRoute from "./ProtectedRoute";
 
 export default function App() {
@@ -22,6 +23,14 @@ export default function App() {
               element={
                 <ProtectedRoute>
                   <Products />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/products/:productId"
+              element={
+                <ProtectedRoute>
+                  <ProductById />
                 </ProtectedRoute>
               }
             />

@@ -1,14 +1,19 @@
 import styled from "styled-components";
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 export default function Product(props){
+  const navigate = useNavigate();
+
   const [selectedPlatform,setSelectedPlatform]=useState(props.platforms[0]);
   return(
     <ProductWrapper>
-      <div><img src={props.image} alt="Game Cover"></img></div>
-      <div>
+      <div onClick={()=>navigate("/products/"+props.productId)}><img src={props.image} alt="Game Cover"></img></div>
+      <div onClick={()=>navigate("/products/"+props.productId)}>
         <h1><p>{props.name}</p></h1>
         <p><label>Platform: </label>
         <select onChange={(e)=>setSelectedPlatform(e.target.value)}>
