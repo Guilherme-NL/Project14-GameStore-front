@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export default function ProductModal({ closeModal }) {
+export default function ProductModal(props) {
   return (
     <ModalBackground>
       <Container>
-        <div onClick={() => closeModal(false)}>X</div>
+        {<div onClick={() => props.closeModal(false)}>X</div>}
         <h1>Adicionado ao Carrinho!</h1>
       </Container>
     </ModalBackground>
@@ -19,7 +19,6 @@ const ModalBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2;
 `;
 const Container = styled.div`
   width: 80%;
@@ -28,6 +27,8 @@ const Container = styled.div`
   background-color: #f5f5f5;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 25px;
+  z-index: 2;
+
 
   div {
     display: flex;

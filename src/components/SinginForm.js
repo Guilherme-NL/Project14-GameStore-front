@@ -16,6 +16,7 @@ export default function SinginForm() {
   const [password, setPassword] = React.useState("");
   const [, setUserData] = useUserData();
 
+
   function submitLogin(e) {
     e.preventDefault();
     setIsLoading(true);
@@ -35,7 +36,8 @@ export default function SinginForm() {
         navigate("/products");
       })
       .catch((err) => {
-        alert(err.response.statusText);
+        console.log(err)
+        alert(err.response.data);
         setIsLoading(false);
       });
   }

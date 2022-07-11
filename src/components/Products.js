@@ -40,7 +40,7 @@ export default function Products() {
         page
     );
     //*/
-    /* const requisition = axios.get(
+     /*const requisition = axios.get(
        "http://localhost:5000/products?searchTerm=" +
          searchTerm +
          "&searchCategory=" +
@@ -82,7 +82,7 @@ export default function Products() {
     requisition.then((response) => {
       console.log("Posted");
       setOpenModal(true);
-      console.log(openModal)
+
     });
     requisition.catch((error) => {
       alert("Ocorreu um erro");
@@ -108,9 +108,10 @@ export default function Products() {
             addToCart={addToCart}
           />
         ))}
+        {openModal && <ProductModal closeModal={setOpenModal} />}
       </Container>
       <PageBar page={page} setPage={setPage} maxPage={maxPage} requestProductList={requestProductList}/>
-      {openModal && <ProductModal closeModal={setOpenModal} />}
+
       <BottomBar />
     </>
   );
